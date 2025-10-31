@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>DSA Learning Flowchart</title>
+<style>
+:root{
+	--bg:#0f1724; --card:#0b1220; --muted:#95a0b5;
+	--easy:#10b981; --mid:#f59e0b; --hard:#ef4444; --done:#64748b;
+	--accent:#60a5fa;
+}
+body{font-family:Inter,Segoe UI,Roboto,Arial; background:linear-gradient(180deg,#071024 0%,#081827 100%); color:#e6eef8; margin:0; padding:24px}
+.wrap{max-width:1100px;margin:0 auto}
+h1{font-size:22px;margin-bottom:6px}
+p.lead{color:var(--muted); margin-top:0}
+.board{display:grid;grid-template-columns:repeat(7,1fr);gap:18px; margin-top:22px; align-items:start}
+.phase{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01)); border-radius:12px;padding:14px; box-shadow:0 6px 18px rgba(2,6,23,0.6); position:relative; min-height:150px}
+.phase h3{margin:0 0 8px 0;font-size:16px}
+.meta{font-size:12px;color:var(--muted);margin-bottom:8px}
+.pill{display:inline-block;padding:6px 8px;border-radius:999px;font-weight:600;font-size:12px}
+.easy{background:rgba(16,185,129,0.12);color:var(--easy)}
+.mid{background:rgba(245,158,11,0.08);color:var(--mid)}
+.hard{background:rgba(239,68,68,0.08);color:var(--hard)}
+.progress-btn{position:absolute;right:12px;top:12px;background:transparent;border:2px solid rgba(255,255,255,0.06);padding:6px;border-radius:8px;color:var(--muted);cursor:pointer}
+.progress-btn.done{background:linear-gradient(90deg,rgba(100,116,139,0.14),rgba(96,165,250,0.04));border-color:rgba(96,165,250,0.22);color:#cfe8ff}
+.arrow{height:26px;display:flex;align-items:center;justify-content:center}
+svg{width:40px;height:26px}
+.legend{display:flex;gap:10px;align-items:center;margin-top:16px}
+.legend .item{display:flex;gap:8px;align-items:center;color:var(--muted)}
+.legend .sw{width:14px;height:14px;border-radius:4px}
+.time-est{font-size:13px;color:var(--muted)}
+.path{display:flex;align-items:center;gap:6px;margin-top:10px}
+.note{font-size:13px;color:var(--muted);margin-top:10px}
+.reset{margin-left:10px;background:transparent;border:1px dashed rgba(255,255,255,0.06);padding:6px 8px;border-radius:8px;color:var(--muted);cursor:pointer}
+</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<h1>DSA Learning Flowchart — 6 months (7 phases)</h1>
+			<p class="lead">Click each phase's circle to mark it done. Hover for details. This flow is tuned for placements & competitive programming.</p>
+
+
+			<div class="board" id="board">
+				<!-- Phase templates (7 phases) -->
+				<div class="phase" data-phase="1">
+					<button class="progress-btn" onclick="toggleDone(1)">Mark</button>
+					<h3>Phase 1 — C++ Essentials & Problem Solving Basics</h3>
+					<div class="meta"><span class="pill easy">Easy</span> • <span class="time-est">3 weeks</span></div>
+					<ul>
+						<li>Syntax, IO, control flow, functions</li>
+						<li>Arrays, strings, basic Math</li>
+						<li>Intro to problem-solving & thinking</li>
+					</ul>
+				</div>
+
+
+				<div class="phase" data-phase="2">
+					<button class="progress-btn" onclick="toggleDone(2)">Mark</button>
+					<h3>Phase 2 — Fundamental Data Structures</h3>
+					<div class="meta"><span class="pill mid">Medium</span> • <span class="time-est">4 weeks</span></div>
+					<ul>
+						<li>Linked lists, stacks, queues</li>
+						<li>Recursion & basic backtracking</li>
+					</ul>
+				</div>
+
+
+				<div class="phase" data-phase="3">
+					<button class="progress-btn" onclick="toggleDone(3)">Mark</button>
+					<h3>Phase 3 — Trees & Graphs (BFS/DFS)</h3>
+					<div class="meta"><span class="pill hard">Hard</span> • <span class="time-est">4 weeks</span></div>
+					<ul>
+						<li>Binary trees, BST, tree traversals</li>
+						<li>Graph representations, BFS, DFS</li>
+					</ul>
+				</div>
+
+
+				<div class="phase" data-phase="4">
+					<button class="progress-btn" onclick="toggleDone(4)">Mark</button>
+					<h3>Phase 4 — Sorting, Searching & Complexity</h3>
+					<div class="meta"><span class="pill mid">Medium</span> • <span class="time-est">3 weeks</span></div>
+					<ul>
+</html>
