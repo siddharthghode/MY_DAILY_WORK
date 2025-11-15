@@ -1,15 +1,17 @@
-from django.shortcuts import render 
 from django.http import HttpResponse
-
+from django.shortcuts import render
+ 
 def home(request):
+    addition=0
     try:
-        number1=int(request.GET["num1"])
-        number2=int(request.GET["num2"])
-        print(number1+number2)
-        number_add=number1+number2
+        num1=int(request.GET['number1'])
+        num2=int(request.GET['number2'])
+        addition=num1+num2
+        # print(num1+num2)
     except:
         pass
-    return render(request,"home.html",{"result":number_add})
+    # return render(request,"home.html",{'plus_values':adition})
+    return render(request,"home.html",{'value':addition})
 
 def about(request):
     return render(request,"about.html")
