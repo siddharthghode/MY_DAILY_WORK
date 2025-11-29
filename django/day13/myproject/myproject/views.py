@@ -1,17 +1,25 @@
-from django.shortcuts import render 
+from django.shortcuts import render,redirect 
+from django.contrib import messages
 from myapp.models import UserData 
 
 def home(request):
-    uname = None
+    user_name = None
+    user_mobile = None
 
     if request.method == "POST":
-        uname = request.POST.get("username")
+        user_name = request.POST.get("user_name")
+        user_mobile = request.POST.get("user_mobile")
 
-        if uname:
-            obj = UserData(username=uname)
+        if user_name and user_mobile:
+            obj = UserData(
+                user_name=user_name,
+                user_mobile=user_mobile
+            )
             obj.save()
+        messages.success(request, "✅ Data saved successfully!")
+        return redirect("home") 
 
-    return render(request, "home.html", {"usname": uname})
+    return render(request, "home.html",{"user_name":user_name,"user_mobile":user_mobile})
 
 
 def about(request):

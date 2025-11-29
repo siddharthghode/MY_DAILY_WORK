@@ -13,10 +13,13 @@
     <form action="" method="POST">
         {% csrf_token %}
         <label for="">ENTER NAME</label>
-        <input type="text" name="username" placeholder="Enter your name">
+        <input type="text" name="user_name" placeholder="Enter your name">
+        <label for="">ENTER NUMBER</label>
+        <input type="number" name="user_mobile" id="">
         <button type="submit">save</button>
-<br>
-        <input type="text" value="{{usname}}">
+<br><br>
+        <input type="text" value="{{user_name}}">
+        <input type="number" value="{{user_mobile}}" name="" id="">
     </form>
 </body>
 </html>
