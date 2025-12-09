@@ -1,4 +1,9 @@
-# day0_to_day-
-dialy updates and productivity
+# ---day0_to_day_dont_know---
+
+
+<h1>These are just normal things i am doing day by day</h1>
 <br>
-<h1>hey this my first repository and i will add every day submition of my productivity</h1>
+<br>
+<br>
+<br>
+<h3>Nothing special 😜 </h3>
