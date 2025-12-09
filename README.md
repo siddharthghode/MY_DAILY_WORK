@@ -1,9 +1,6 @@
-# ---day0_to_day_dont_know---
+# ---Day0_to_Day_Dont_Know---
 
 
-<h1>These are just normal things i am doing day by day</h1>
+<h3>These are just normal things i am doing day by day</h3>
 <br>
-<br>
-<br>
-<br>
-<h3>Nothing special 😜 </h3>
+<h5>Nothing special 😜 </h5>
