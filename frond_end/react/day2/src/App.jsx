@@ -1,15 +1,16 @@
-import Home from "./pages/home";
-import Form from "./pages/form";
+import Navbar from "./components/navbar.jsx";
+import Form  from "./pages/form.jsx";
+import Footer from "./components/footer.jsx"
 
-function App() {
+
+function App(){
   return (
     <>
-    <Home/>
-    <Form/>
+    <Navbar />
+    <Form />
+    <Footer/>
     </>
-  )
-  
-  
+  );
 }
 
 export default App;
