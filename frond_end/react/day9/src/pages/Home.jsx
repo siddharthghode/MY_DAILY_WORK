@@ -1,7 +1,17 @@
+import { useState } from "react";
+
 export default function Home() {
+  const [showMsg, setShowMsg] = useState(true);
+
   return (
-    <h1 className="text-4xl font-bold italic text-blue-600 text-center mt-10">
-      This is Home Page
-    </h1>
-  )
+    <div>
+      <h1>Home Page</h1>
+
+      {showMsg && <p>Welcome to the Book Recommendation System</p>}
+
+      <button onClick={() => setShowMsg(!showMsg)}>
+        Toggle Message
+      </button>
+    </div>
+  );
 }
