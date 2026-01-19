@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All-in-One DSA Learning Package</title>
+    <style>
+        :root {
+            --bg-color: #1a1a1d;
+            --card-bg: #2c2c31;
+            --font-color: #f0f0f0;
+            --accent-color: #4a90e2;
+            --green: #50fa7b;
+            --yellow: #f1fa8c;
+            --orange: #ffb86c;
+            --red: #ff5555;
+            --border-color: #44475a;
+            --arrow-color: #6272a4;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--font-color);
+            margin: 0;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1, h2, h3 {
+            color: var(--accent-color);
+        }
+        h1 { margin-bottom: 1rem; }
+        .info-container {
+            background-color: var(--card-bg);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            text-align: center;
+            border-left: 5px solid var(--accent-color);
+        }
+        .resource-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        .btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        .btn:hover { background-color: #62a3f5; }
+        #reset-btn { background-color: var(--red); margin-top: 10px; }
+        #reset-btn:hover { background-color: #ff79c6; }
+        
+        /* Flowchart Styles */
+        .flowchart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        .phase {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            width: 90%;
+            max-width: 700px;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .phase.completed {
+            background-color: #3a3a40;
+            border-left: 5px solid var(--green);
+        }
+        .phase.completed .phase-title h2 { text-decoration: line-through; color: #aaa; }
+        .phase-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+        .phase-title { display: flex; align-items: center; }
+        .difficulty { width: 15px; height: 15px; border-radius: 50%; margin-right: 1rem; }
+        .diff-green { background-color: var(--green); }
+        .diff-yellow { background-color: var(--yellow); }
+        .diff-orange { background-color: var(--orange); }
+        .diff-red { background-color: var(--red); }
+        .phase-title h2 { margin: 0; font-size: 1.5rem; }
+        .phase-details { display: flex; justify-content: space-between; font-size: 0.9rem; color: #ccc; }
+        .phase-content { margin-top: 1rem; }
+        .phase-content h3 { border-bottom: 1px solid var(--border-color); padding-bottom: 5px; }
+        ul { list-style-type: none; padding: 0; }
+        li { background-color: #38383d; padding: 8px; margin: 4px 0; border-radius: 4px; }
+        .arrow { font-size: 2rem; color: var(--arrow-color); margin: -0.5rem 0; }
+        .progress-btn { padding: 8px 12px; border: none; border-radius: 5px; cursor: pointer; background-color: var(--accent-color); color: white; transition: background-color 0.3s; }
+        .progress-btn:hover { background-color: #62a3f5; }
+        .phase.completed .progress-btn { background-color: var(--green); color: black; }
+
+        /* Modal Styles */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.7);
+        }
+        .modal-content {
+            background-color: var(--card-bg);
+            margin: 5% auto;
+            padding: 20px 30px;
+            border: 1px solid var(--border-color);
+            width: 85%;
+            max-width: 900px;
+            border-radius: 10px;
+            position: relative;
+        }
+        .close-btn {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close-btn:hover, .close-btn:focus { color: var(--red); }
+        .modal-content h2 { margin-top: 0; }
+        .modal-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        .modal-content th, .modal-content td {
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            text-align: left;
+        }
+        .modal-content th { background-color: #38383d; }
+        .modal-content code {
+            background-color: #1e1e1e;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .modal-content .category {
+            margin-top: 1.5rem;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>DSA Learning Package</h1>
+    <div class="info-container">
+        <p>This page combines an interactive flowchart with essential DSA notes. Click "Mark as Complete" on any phase to track your progress. Use the buttons below to access quick reference guides.</p>
+        <div class="resource-buttons">
+            <button class="btn" onclick="openModal('algorithmsModal')">Essential Algorithms</button>
+            <button class="btn" onclick="openModal('patternsModal')">Problem-Solving Patterns</button>
+            <button class="btn" onclick="openModal('questionsModal')">Interview Questions</button>
+            <button class="btn" onclick="openModal('cheatsheetModal')">Cheat Sheets</button>
+        </div>
+        <button id="reset-btn" class="btn">Reset Progress</button>
+    </div>
+
+    <div class="flowchart" id="flowchart-container">
+        </div>
+    
+    <div id="algorithmsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('algorithmsModal')">&times;</span>
+            <h2>Essential Algorithms</h2>
+            <table>
+              <thead>
+                <tr><th>Algorithm</th><th>Type</th><th>Time Complexity</th><th>When to use</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Binary Search</strong></td><td>Searching</td><td>$O(\log N)$</td><td>On a <strong>sorted</strong> array or search space.</td></tr>
+                <tr><td><strong>Merge Sort</strong></td><td>Sorting</td><td>$O(N \log N)$</td><td>Stable sort, good for linked lists, guaranteed performance.</td></tr>
+                <tr><td><strong>Quick Sort</strong></td><td>Sorting</td><td>$O(N \log N)$ avg, $O(N^2)$ worst</td><td>In-place, generally faster in practice for arrays.</td></tr>
+                <tr><td><strong>BFS (Breadth-First Search)</strong></td><td>Graph Traversal</td><td>$O(V+E)$</td><td>Finding the shortest path in an unweighted graph. Level-order traversal.</td></tr>
+                <tr><td><strong>DFS (Depth-First Search)</strong></td><td>Graph Traversal</td><td>$O(V+E)$</td><td>Checking connectivity, finding cycles, path-finding.</td></tr>
+                <tr><td><strong>Dijkstra's Algorithm</strong></td><td>Graph Shortest Path</td><td>$O(E \log V)$</td><td>Shortest path from a single source in a weighted graph with <strong>no negative edges</strong>.</td></tr>
+                <tr><td><strong>Kadane's Algorithm</strong></td><td>Dynamic Programming</td><td>$O(N)$</td><td>Finding the maximum contiguous subarray sum.</td></tr>
+                <tr><td><strong>Prim's / Kruskal's</strong></td><td>Minimum Spanning Tree</td><td>$O(E \log V)$ / $O(E \log E)$</td><td>Finding a minimum weight subset of edges that connects all vertices.</td></tr>
+              </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="patternsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('patternsModal')">&times;</span>
+            <h2>Problem-Solving Patterns</h2>
+            <div class="category">
+              <h3>Two Pointers</h3>
+              <p>Use two pointers moving towards each other or in the same direction. Ideal for sorted arrays or linked lists.</p>
+              <p><strong>Common Problems:</strong> Two Sum on sorted array, Container with most water, Remove duplicates.</p>
+            </div>
+            <div class="category">
+              <h3>Sliding Window</h3>
+              <p>A window of a fixed or variable size slides through a data structure. Used for finding optimal subarrays/substrings.</p>
+              <p><strong>Common Problems:</strong> Max sum subarray of size K, Longest substring without repeating characters.</p>
+            </div>
+            <div class="category">
+              <h3>Fast & Slow Pointers</h3>
+              <p>Two pointers that move through a sequence at different speeds. Great for cycle detection and finding middle elements.</p>
+              <p><strong>Common Problems:</strong> Detect a cycle in a linked list, Find the middle of a linked list.</p>
+            </div>
+            <div class="category">
+              <h3>Recursion & Backtracking</h3>
+              <p>Explore all possible solutions by building a solution step-by-step and backtracking if a path is invalid.</p>
+              <p><strong>Common Problems:</strong> Subsets, Permutations, N-Queens, Sudoku solver.</p>
+            </div>
+            <div class="category">
+              <h3>Dynamic Programming (DP)</h3>
+              <p>Break a problem into overlapping subproblems and store their results to avoid redundant calculations.</p>
+              <p><strong>Common Problems:</strong> Fibonacci, 0/1 Knapsack, Longest Common Subsequence.</p>
+            </div>
+             <div class="category">
+              <h3>Greedy Approach</h3>
+              <p>Make the locally optimal choice at each step with the hope of finding a global optimum.</p>
+              <p><strong>Common Problems:</strong> Activity Selection, Fractional Knapsack, Huffman Coding.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="questionsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('questionsModal')">&times;</span>
+            <h2>Common Interview Questions</h2>
+            <div class="category">
+                <h3>Arrays & Strings</h3>
+                <ul>
+                    <li><strong>Two Sum:</strong> Find two numbers that add up to a target. (Use a hash map for $O(N)$).</li>
+                    <li><strong>Container With Most Water:</strong> Use a two-pointer approach.</li>
+                    <li><strong>Longest Substring Without Repeating Characters:</strong> Use a sliding window and a hash set/map.</li>
+                    <li><strong>Valid Parentheses:</strong> Use a stack.</li>
+                    <li><strong>Rotate Image:</strong> Rotate an N x N matrix by 90 degrees in-place.</li>
+                </ul>
+            </div>
+            <div class="category">
+                <h3>Linked Lists</h3>
+                <ul>
+                    <li><strong>Reverse a Linked List:</strong> Iterative and recursive solutions.</li>
+                    <li><strong>Detect Cycle in a Linked List:</strong> Floyd's Cycle-Finding Algorithm (fast/slow pointers).</li>
+                    <li><strong>Merge Two Sorted Lists:</strong> Use a dummy node to build the new list.</li>
+                    <li><strong>Remove Nth Node From End of List:</strong> Two pointers with a gap of N.</li>
+                </ul>
+            </div>
+            <div class="category">
+                <h3>Trees & Graphs</h3>
+                <ul>
+                    <li><strong>Invert Binary Tree:</strong> Recursive swap of left and right children.</li>
+                    <li><strong>Validate Binary Search Tree:</strong> In-order traversal or recursive range check.</li>
+                    <li><strong>Number of Islands:</strong> Use BFS or DFS to find and "sink" connected components.</li>
+                    <li><strong>Course Schedule:</strong> Graph cycle detection (topological sort).</li>
+                </ul>
+            </div>
+            <div class="category">
+                <h3>Dynamic Programming</h3>
+                <ul>
+                    <li><strong>Climbing Stairs:</strong> Classic DP problem related to Fibonacci sequence.</li>
+                    <li><strong>Coin Change:</strong> Find the minimum number of coins for a given amount.</li>
+                    <li><strong>Longest Increasing Subsequence:</strong> $O(N^2)$ and $O(N \log N)$ solutions.</li>
+                </ul>
+                <p><i>(...and many more covering heaps, backtracking, etc.)</i></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="cheatsheetModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('cheatsheetModal')">&times;</span>
+            <h2>Quick Reference Cheat Sheets</h2>
+            <h3>Time Complexity of Data Structures (Average Case)</h3>
+            <table>
+              <thead><tr><th>Data Structure</th><th>Access</th><th>Search</th><th>Insert</th><th>Delete</th></tr></thead>
+              <tbody>
+                <tr><td>Array</td><td>$O(1)$</td><td>$O(N)$</td><td>$O(N)$</td><td>$O(N)$</td></tr>
+                <tr><td>Stack/Queue</td><td>-</td><td>-</td><td>$O(1)$</td><td>$O(1)$</td></tr>
+                <tr><td>Linked List</td><td>$O(N)$</td><td>$O(N)$</td><td>$O(1)$</td><td>$O(1)$</td></tr>
+                <tr><td>Hash Table (<code>unordered_map</code>)</td><td>-</td><td>$O(1)$</td><td>$O(1)$</td><td>$O(1)$</td></tr>
+                <tr><td>Binary Search Tree (<code>map</code>)</td><td>-</td><td>$O(\log N)$</td><td>$O(\log N)$</td><td>$O(\log N)$</td></tr>
+                <tr><td>Heap (<code>priority_queue</code>)</td><td>-</td><td>-</td><td>$O(\log N)$</td><td>$O(\log N)$</td></tr>
+              </tbody>
+            </table>
+            <h3>C++ STL Quick Syntax</h3>
+            <ul>
+                <li><strong>Vector:</strong> <code>vector&lt;int&gt; v; v.push_back(10);</code></li>
+                <li><strong>Map:</strong> <code>map&lt;string, int&gt; m; m["key"] = 100;</code></li>
+                <li><strong>Unordered Map:</strong> <code>unordered_map&lt;string, int&gt; um;</code></li>
+                <li><strong>Set:</strong> <code>set&lt;int&gt; s; s.insert(20);</code></li>
+                <li><strong>Stack:</strong> <code>stack&lt;int&gt; st; st.push(5); st.pop();</code></li>
+                <li><strong>Queue:</strong> <code>queue&lt;int&gt; q; q.push(5); q.pop();</code></li>
+                <li><strong>Min-Heap:</strong> <code>priority_queue&lt;int, vector&lt;int&gt;, greater&lt;int&gt;&gt; pq;</code></li>
+                <li><strong>Sorting:</strong> <code>sort(v.begin(), v.end());</code></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <script>
+        const phasesData = [
+            { id: 'phase1', title: 'Foundation & C++ Essentials', duration: '3-4 Weeks', difficulty: 'green', topics: ['Basic Syntax, Variables, Data Types', 'Operators and Control Flow', 'Functions and Pointers', 'Basic Time/Space Complexity', 'C++ STL: `vector`, `string`, `iostream`'] },
+            { id: 'phase2', title: 'Core Data Structures (Linear)', duration: '6-8 Weeks', difficulty: 'green', topics: ['Arrays & Strings In-depth', 'Linked Lists (Singly, Doubly)', 'Stacks & Applications', 'Queues & Applications', 'C++ STL: `stack`, `queue`, `list`'] },
+            { id: 'phase3', title: 'Essential Algorithms & Non-Linear DS', duration: '6-8 Weeks', difficulty: 'yellow', topics: ['Searching (Binary Search)', 'Sorting (Merge, Quick)', 'Hashing & Hash Tables', 'Trees (Binary, BST, Traversals)', 'Heaps & Priority Queue', 'C++ STL: `set`, `map`, `unordered_map`, `priority_queue`'] },
+            { id: 'phase4', title: 'Problem-Solving Paradigms', duration: '6-8 Weeks', difficulty: 'orange', topics: ['Recursion & Backtracking', 'Two Pointers & Sliding Window', 'Greedy Algorithms', 'Divide and Conquer', 'Introduction to Dynamic Programming (DP)'] },
+            { id: 'phase5', title: 'Advanced DSA', duration: '5-6 Weeks', difficulty: 'red', topics: ['Graphs (BFS, DFS)', 'Graph Algorithms (Dijkstra, MST)', 'Tries', 'Bit Manipulation', 'Advanced DP Problems'] },
+            { id: 'phase6', title: 'Interview Preparation & Polish', duration: '4-5 Weeks', difficulty: 'red', topics: ['Solving LeetCode Medium/Hard', 'Company-specific question patterns', 'Mock Interviews', 'Behavioral Questions (STAR method)', 'System Design Basics'] }
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('flowchart-container');
+            const progress = JSON.parse(localStorage.getItem('dsaProgress')) || {};
+
+            phasesData.forEach((phase, index) => {
+                const isCompleted = progress[phase.id] || false;
+                const phaseElement = document.createElement('div');
+                phaseElement.className = `phase ${isCompleted ? 'completed' : ''}`;
+                phaseElement.id = phase.id;
+
+                let difficultyColorClass = 'diff-' + phase.difficulty;
+                
+                phaseElement.innerHTML = `
+                    <div class="phase-header">
+                        <div class="phase-title">
+                            <div class="difficulty ${difficultyColorClass}"></div>
+                            <h2>${phase.title}</h2>
+                        </div>
+                        <button class="progress-btn">${isCompleted ? 'Completed ✔' : 'Mark as Complete'}</button>
+                    </div>
+                    <div class="phase-details">
+                        <span><strong>Difficulty:</strong> ${phase.difficulty.charAt(0).toUpperCase() + phase.difficulty.slice(1)}</span>
+                        <span><strong>Estimated Time:</strong> ${phase.duration}</span>
+                    </div>
+                    <div class="phase-content">
+                        <h3>Topics to Cover:</h3>
+                        <ul>${phase.topics.map(topic => `<li>${topic}</li>`).join('')}</ul>
+                    </div>
+                `;
+                
+                container.appendChild(phaseElement);
+                
+                if (index < phasesData.length - 1) {
+                    const arrow = document.createElement('div');
+                    arrow.className = 'arrow';
+                    arrow.innerHTML = '↓';
+                    container.appendChild(arrow);
+                }
+            });
+
+            document.querySelectorAll('.progress-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const phaseDiv = e.target.closest('.phase');
+                    const isCompleted = phaseDiv.classList.toggle('completed');
+                    progress[phaseDiv.id] = isCompleted;
+                    localStorage.setItem('dsaProgress', JSON.stringify(progress));
+                    e.target.textContent = isCompleted ? 'Completed ✔' : 'Mark as Complete';
+                });
+            });
+
+            document.getElementById('reset-btn').addEventListener('click', () => {
+                if (confirm('Are you sure you want to reset all your progress?')) {
+                    localStorage.removeItem('dsaProgress');
+                    location.reload();
+                }
+            });
+        });
+        
+        // Modal logic
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

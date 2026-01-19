@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+</head>
+<body>
+    <h1>{{heading}}</h1>
+    <br>
+    {%for n in languages%}
+    <div>
+        <h3>{{forloop.counter}}:{{n}}</h3>
+    </div>
+    {%endfor%}
+
+     <table border="1" cellpadding="10">
+        <tr>
+            <th>Name</th>
+            <th>Phone Number</th>
+        </tr>
+        {%for m in student_details%}
+        <tr>
+            <td>{{m.name}}</td>
+            <td>{{m.phone}}</td>
+        </tr>
+        {% endfor %}
+     </table>
+    <br>
+    {% for o in numbers %}
+    <div>
+        {% if o > 3 %}
+        <h4>{{o}}</h4>
+        {% endif %}
+    </div>
+    {% endfor %}
+</body>
+</html>
