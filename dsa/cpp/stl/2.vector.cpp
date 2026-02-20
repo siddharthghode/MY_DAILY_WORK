@@ -38,7 +38,7 @@ int main()
    vector<pair<int,int>>::iterator it1; //print all pairs
    for(it1=v1.begin();it1!=v1.end();it1++)
    {
-     cout<<(*it1).first<<" "<<(*it1).second<<endl; 
+     cout<<(*it1).first<<" "<<(*it1).second<<"||"; 
    }
 
 
@@ -46,7 +46,7 @@ int main()
    sort(v1.begin(),v1.end(),greater<pair<int,int>>());
    for(auto it=v1.begin();it!=v1.end();it++)
    {
-      cout<<(*it).first<<" "<<(*it).second<<endl;
+      cout<<(*it).first<<" "<<(*it).second<<"||";
    }
 
 
@@ -54,12 +54,21 @@ int main()
    sort(v1.begin(),v1.end(),greater<pair<int,int >>());
    for(auto it=v1.begin();it!=v1.end();it++)
    {
-      cout<<(*it).first<<" "<<(*it).second<<endl;
+      cout<<(*it).first<<" "<<(*it).second<<"||";
    }
 
    cout<<endl<<"Custom sorted vector on the bases of second element"<<endl; //print all pairs in custom sorted order
    sort(v1.begin(),v1.end(),comparator);
    
    for(auto it=v1.begin();it!=v1.end();it++)
-      cout<<(*it).first<<" "<<(*it).second<<endl;
+   {
+      cout<<(*it).first<<" "<<(*it).second<<"||";
    }
+   cout<<endl<<"Custom sorted vector on the bases of second element using auto"<<endl; //print all pairs in custom sorted order
+     for(auto it:v1)
+     {
+        cout<<it.first<<" "<<it.second<<"||";
+     }
+   cout<<endl<<"Size of vector: "<<v1.size()<<endl;
+   
+}
