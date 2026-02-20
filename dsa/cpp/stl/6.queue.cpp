@@ -1,0 +1,18 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    queue<int> q;
+    q.push(2);
+    q.push(3);
+    q.push(4);
+    q.push(0);
+    queue<int> a=q;
+    while(!a.empty())
+    {
+        cout<<"|"<<a.front();
+        a.pop();
+    }   
+    cout<<endl<<q.back();
+    cout<<endl;
+}
