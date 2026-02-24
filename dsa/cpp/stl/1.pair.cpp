@@ -18,7 +18,7 @@ void printpair()
 
     //array of pair
     pair<int,int> arr[]={{1,3},{3,4},{4,5}};
-    cout<<arr[1].second<<endl;
+    cout<<arr[1].second<<endl; 
 
     //bool
     cout<<(p>demo);
