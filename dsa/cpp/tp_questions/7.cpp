@@ -3,7 +3,7 @@
 using namespace std;
 int main()
 {
-     string a = "madedam";
+     string a = "maddam";
 	int i=0,j=a.length()-1;
 
 	while(i<=j)
