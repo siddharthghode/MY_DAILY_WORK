@@ -1,0 +1,11 @@
+EmployeeID,Name,Department,Team,Gender,Salary,Age,JoinDate
+1,Amit,HR,A,M,85000,23,2020-01-10
+2,Priya,HR,A,F,90000,25,2020-02-15
+3,Rahul,IT,B,M,78000,30,2021-03-20
+4,Neha,IT,B,F,85000,22,2021-04-10
+5,Arjun,Marketing,C,M,92000,28,2020-05-30
+6,Kavya,Marketing,C,F,88000,26,2020-06-25
+7,Rohan,Sales,D,M,75000,21,2021-07-15
+8,Anita,Sales,D,F,80000,27,2021-08-01
+9,Vikram,IT,B,M,91000,29,2022-02-10
+10,Sneha,HR,A,F,87000,24,2022-03-11

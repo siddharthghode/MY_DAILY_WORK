@@ -1,0 +1,26 @@
+[
+    {
+        "Name": "John",
+        "Age": 25,
+        "Movie": "Avatar",
+        "IMDb": 7.8
+    },
+    {
+        "Name": "Alice",
+        "Age": 30,
+        "Movie": "Titanic",
+        "IMDb": 7.9
+    },
+    {
+        "Name": "Bob",
+        "Age": 22,
+        "Movie": "MovieX",
+        "IMDb": 5.9
+    },
+    {
+        "Name": "Sam",
+        "Age": 28,
+        "Movie": "MovieY",
+        "IMDb": 6.5
+    }
+]
