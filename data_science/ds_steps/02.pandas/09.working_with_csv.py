@@ -14,7 +14,7 @@ import pandas as pd
 print("\n--- Reading CSV File ---")
 
 # Basic read
-df = pd.read_csv("files/data.csv")
+df = pd.read_csv("files/data1.csv")
 
 print(df)
 
@@ -25,7 +25,7 @@ print(df)
 
 print("\n--- Reading Specific Columns ---")
 
-df_cols = pd.read_csv("files/data.csv", usecols=["Name", "Age"])
+df_cols = pd.read_csv("files/data1.csv", usecols=["Name", "Age"])
 
 print(df_cols)
 
@@ -36,7 +36,7 @@ print(df_cols)
 
 print("\n--- Reading Limited Rows ---")
 
-df_rows = pd.read_csv("files/data.csv", nrows=5)
+df_rows = pd.read_csv("files/data1.csv", nrows=5)
 
 print(df_rows)
 
@@ -69,7 +69,7 @@ print("File saved as data_updated.csv")
 
 print("\n--- Reading Excel File ---")
 
-df_excel = pd.read_excel("data.xlsx")
+df_excel = pd.read_excel("files/data1.xlsx")
 
 print(df_excel)
 
@@ -80,7 +80,7 @@ print(df_excel)
 
 print("\n--- Reading Specific Sheet ---")
 
-df_sheet = pd.read_excel("data.xlsx", sheet_name="Sales")
+df_sheet = pd.read_excel("files/data1.xlsx", sheet_name="Sales")
 
 print(df_sheet)
 
@@ -91,7 +91,7 @@ print(df_sheet)
 
 print("\n--- Writing Excel File ---")
 
-df_excel.to_excel("output.xlsx", index=False)
+df_excel.to_excel("files/output.xlsx", index=False)
 
 print("Excel file saved as output.xlsx")
 
@@ -102,7 +102,7 @@ print("Excel file saved as output.xlsx")
 
 print("\n--- Reading JSON File ---")
 
-df_json = pd.read_json("my.json")
+df_json = pd.read_json("files/my.json")
 
 print(df_json)
 
