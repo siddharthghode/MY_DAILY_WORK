@@ -1,0 +1,1 @@
+CREATE TABLE emp(emp_id SERIAL PRIMARY KEY, );
