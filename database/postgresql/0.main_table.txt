@@ -1,0 +1,33 @@
+emp_id |  fname  |   lname    |       email        |   dept    |  salary  | hire_date
+--------+---------+------------+--------------------+-----------+----------+------------
+      1 | sid     | hero       | sid@gamil.com      | IT        | 40000.00 | 2026-04-03
+      3 | Amit    | Sharma     | amit1@gmail.com    | HR        | 32000.00 | 2025-01-10
+      4 | Priya   | Patil      | priya1@gmail.com   | Finance   | 45000.00 | 2024-02-15
+      5 | Rahul   | Verma      | rahul1@gmail.com   | IT        | 50000.00 | 2023-03-20
+      6 | Sneha   | Joshi      | sneha1@gmail.com   | Marketing | 38000.00 | 2022-04-25
+      7 | Karan   | Mehta      | karan1@gmail.com   | Sales     | 30000.00 | 2025-05-05
+      8 | Neha    | Kulkarni   | neha1@gmail.com    | HR        | 35000.00 | 2024-06-10
+      9 | Rohit   | Gupta      | rohit1@gmail.com   | IT        | 60000.00 | 2023-07-12
+     10 | Anjali  | Desai      | anjali1@gmail.com  | Finance   | 42000.00 | 2022-08-18
+     11 | Vikas   | Yadav      | vikas1@gmail.com   | IT        | 55000.00 | 2021-09-09
+     12 | Pooja   | Nair       | pooja1@gmail.com   | Marketing | 36000.00 | 2020-10-11
+     13 | Arjun   | Reddy      | arjun1@gmail.com   | Sales     | 31000.00 | 2025-01-01
+     14 | Meera   | Iyer       | meera1@gmail.com   | HR        | 33000.00 | 2024-02-02
+     15 | Suresh  | Naik       | suresh1@gmail.com  | IT        | 47000.00 | 2023-03-03
+     16 | Deepak  | Singh      | deepak1@gmail.com  | Finance   | 52000.00 | 2022-04-04
+     17 | Kavita  | Shah       | kavita1@gmail.com  | Marketing | 39000.00 | 2021-05-05
+     18 | Manish  | Jain       | manish1@gmail.com  | Sales     | 34000.00 | 2020-06-06
+     19 | Ritu    | Kapoor     | ritu1@gmail.com    | HR        | 36000.00 | 2019-07-07
+     20 | Nikhil  | Agarwal    | nikhil1@gmail.com  | IT        | 58000.00 | 2018-08-08
+     21 | Swati   | Bansal     | swati1@gmail.com   | Finance   | 46000.00 | 2017-09-09
+     22 | Tarun   | Chopra     | tarun1@gmail.com   | Marketing | 37000.00 | 2016-10-10
+     23 | Divya   | Saxena     | divya1@gmail.com   | Sales     | 30000.00 | 2025-01-15
+     24 | Yash    | Tiwari     | yash1@gmail.com    | HR        | 31000.00 | 2024-02-20
+     25 | Harsh   | Mishra     | harsh1@gmail.com   | IT        | 49000.00 | 2023-03-25
+     26 | Isha    | Ghosh      | isha1@gmail.com    | Finance   | 53000.00 | 2022-04-30
+     27 | Varun   | Das        | varun1@gmail.com   | Marketing | 41000.00 | 2021-05-10
+     28 | Rakesh  | Pillai     | rakesh1@gmail.com  | Sales     | 32000.00 | 2020-06-12
+     29 | Komal   | Malhotra   | komal1@gmail.com   | HR        | 34000.00 | 2019-07-14
+     30 | Aditya  | Roy        | aditya1@gmail.com  | IT        | 57000.00 | 2018-08-16
+     31 | Preeti  | Sinha      | preeti1@gmail.com  | Finance   | 48000.00 | 2017-09-18
+     32 | Gaurav  | Dubey      | gaurav1@gmail.com  | Marketing | 39000.00 | 2016-10-20
