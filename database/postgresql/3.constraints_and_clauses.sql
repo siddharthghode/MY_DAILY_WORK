@@ -1,0 +1,13 @@
+//IN
+SELECT * FROM emp WHERE dept IN ('HR','IT') AND SALARY>3000;
+
+//OR
+SELECT * FROM emp WHERE dept = 'HR' OR dept = 'IT';
+
+//AND
+SELECT * FROM emp WHERE dept = 'HR' AND SALARY>30000;
+
+//NOT
+SELECT * FROM emp WHERE dept = 'HR' AND NOT SALARY>30000;
+
+//
