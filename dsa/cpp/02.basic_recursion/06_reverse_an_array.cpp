@@ -1,12 +1,20 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int main()
+void reverseArray(int arr[],int start,int end)
 {
-    int arr[]={1,2,3,4,5};
-    cout<<sizeof(arr);
-    //  for(int i=0;i<arr.length();i++)
-    //  {
-        //  for(int j=arr.length();j>=0;)
-    //  }
+    
+    if(start>=end) return;
+    swap(arr[start],arr[end]);
+    reverseArray(arr,start+1,end-1);
 }
+int main()
+    {
+      int arr[]={1,2,3,4,5,6};
+      int end=sizeof(arr)/sizeof(arr[0]);
+      reverseArray(arr,0,end-1);
+      for(int i=0;i<end;i++)
+      {
+        cout<<arr[i]<<" ";
+      }
+    }
