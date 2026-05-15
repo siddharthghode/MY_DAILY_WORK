@@ -14,6 +14,10 @@ void bubblesort(int arr[],int n)
             swapped=true;
         }
     }
+    if(!swapped)
+    {
+	    break;
+    }
   }
 }
 int main()
