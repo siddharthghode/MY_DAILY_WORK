@@ -3,7 +3,7 @@ using namespace std;
 
 int main()
 {
-    unordered_map<char,int> a;
+    map<char,int> a;
 
     string s = "hellowOrld";
 
