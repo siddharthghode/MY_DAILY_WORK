@@ -1,35 +1,37 @@
 #include<bits/stdc++.h>
 using namespace std;
-int pfunction(vector<int> &arr,int low,int high)
+int partition(vector<int> &arr,int low ,int high)
 {
-    int pivot =arr[low];
+    int pivot=arr[low];
     int i=low;
     int j=high;
     while(i<j)
     {
         while(arr[i]<=pivot && i<=high-1)
         {
-            i++;
+            i++;q
         }
-        while(arr[j]>=pivot && j>=low+1)
+        while (arr[j]>pivot && j>=low+1)
         {
             j--;
         }
-        if(i<j) swap(arr[i],arr[j]);
+        if(i<j)
+        {
+            swap(arr[i],arr[j]);
+        }
     }
-    swap(arr[low],arr[j]);
-    return j;
+swap(arr[low],arr[j]);
+        return j;
 }
-void qs(vector<int>&arr,int low,int high)
+void qs(vector<int> &arr,int low,int high)
 {
   if(low<high)
   {
-    int pindex=pfunction(arr,low,high);
-    qs(arr,low,pindex-1);
-    qs(arr,pindex+1,high);
+    int j=partition(arr,low,high);
+    qs(arr,low,j-1);
+    qs(arr,j+1,high);
   }
 }
-
 int main()
 {
     vector<int> arr={34, 7, 23, 32, 5, 62, 78, 1, 55, 19};
