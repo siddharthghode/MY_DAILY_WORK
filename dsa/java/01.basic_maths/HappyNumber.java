@@ -1,4 +1,4 @@
-import java.util.HashSet;
+import java.util.*;
 
 public class HappyNumber {
     static boolean isHappy(int num) {
