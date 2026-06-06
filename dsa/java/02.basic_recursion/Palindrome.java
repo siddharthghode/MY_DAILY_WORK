@@ -1,12 +1,20 @@
+import java.util.*;
 public class Palindrome {
-    static boolean checkPalindrome(String word, int i, int end) {
-        if (i >= end) return true;
-        if (word.charAt(i) != word.charAt(end)) return false;
-        return checkPalindrome(word, i + 1, end - 1);
-    }
+   static boolean checkpal(String a,int i,int end) 
+{
+    while(i<=end)
+{
+    if(a.charAt(i)!=a.charAt(end)) return false;
 
-    public static void main(String[] args) {
-        String word = "madam";
-        System.out.println(checkPalindrome(word, 0, word.length() - 1) ? "Palindrome" : "Not Palindrome");
-    }
+      i++;
+      end--;
+} return true;
+}
+public  static void main(String[] args)
+{
+Scanner sc = new Scanner(System.in);
+System.out.println("Enter the word:");
+String a=sc.next();
+System.out.println(checkpal(a,0,a.length()-1));
+}
 }
