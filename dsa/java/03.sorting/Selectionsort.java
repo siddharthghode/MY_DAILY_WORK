@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Selectionsort {
 
-    static void sort(int[] array, int n) {
+    static void sort(ArrayList<Integer> list, int n) {
 
         for(int i = 0; i <= n; i++) {
 
@@ -10,28 +10,26 @@ public class Selectionsort {
 
             for(int j = i + 1; j <= n; j++) {
 
-                if(array[j] < array[min]) {
+                if(list.get(j) < list.get(min)) {
                     min = j;
                 }
             }
 
-            int temp = array[i];
-            array[i] = array[min];
-            array[min] = temp;
+            Collections.swap(list,i,min);
         }
     }
 
 
     public static void main(String[] args) {
 
-        int[] array = {45,12,89,3,67,23,9,100};
+        ArrayList<Integer> list=new ArrayList<>(Arrays.asList(45,12,89,3,67,23,9,100));
 
-        int n = array.length - 1;
+        int n = list.size() - 1;
 
-        sort(array,n);
+        sort(list,n);
 
         for(int i=0; i<=n; i++) {
-            System.out.println(array[i]);
+            System.out.print(" "+list.get(i));
         }
     }
 }
