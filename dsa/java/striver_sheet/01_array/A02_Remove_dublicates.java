@@ -1,7 +1,7 @@
 import java.lang.reflect.Array;
 import java.util.*;
 
-public class Remove_dublicates{
+public class A02_Remove_dublicates{
     static void remove_dub(ArrayList<Integer> list)
     {
         int i=0;
