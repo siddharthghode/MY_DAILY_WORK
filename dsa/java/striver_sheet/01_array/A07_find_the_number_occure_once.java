@@ -1,6 +1,6 @@
 import java.util.HashMap;
 
-public class A07 {
+public class A07_find_the_number_occure_once {
     public static void main(String[] args) {
         // find the single element amoung doubles
         // int[] array = { 1, 2, 2, 4, 3, 1, 4 };
