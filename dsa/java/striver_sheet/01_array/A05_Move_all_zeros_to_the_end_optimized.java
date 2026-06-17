@@ -20,7 +20,7 @@ public class A05_Move_all_zeros_to_the_end_optimized {
         }
 
         if(j==-1) return;
-
+;
 
         // move zeros
         for(int k=j+1; k<list.size(); k++)
