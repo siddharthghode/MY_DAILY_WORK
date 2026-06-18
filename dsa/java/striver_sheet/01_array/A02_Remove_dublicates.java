@@ -1,42 +1,42 @@
-import java.lang.reflect.Array;
 import java.util.*;
 
-public class A02_Remove_dublicates{
-    static void remove_dub(ArrayList<Integer> list)
-    {
-        int i=0;
-        for(int j=1;j<=list.size()-1;j++)
-        {
-            if(list.get(i)!=list.get(j))
-            {
+public class A02_Remove_dublicates {
+
+    static void remove_dub(ArrayList<Integer> list) {
+
+        int i = 0;
+
+        for (int j = 1; j < list.size(); j++) {
+
+            if (!list.get(i).equals(list.get(j))) {
                 i++;
-                list.set(i,list.get(j));
+                list.set(i, list.get(j));
             }
         }
-        int k=i+1;
-        while(k<=list.size()-1)
-        {
-           list.remove(k);
-           i++;
+
+        int k = i + 1;
+
+        while (k < list.size()) {
+            list.remove(k);
         }
     }
-    public static void main(String[] args)
-    {
-        System.out.println("Enter the number of elements for array");
-        Scanner sc = new Scanner(System.in);
 
-        int n=sc.nextInt();
-        ArrayList<Integer> list = new ArrayList<>();
-        for(int i=0;i<n;i++)
-        {
-            int value=sc.nextInt();
-            list.add(value);
-        }
+    public static void main(String[] args) {
+
+        ArrayList<Integer> list = new ArrayList<>(
+                Arrays.asList(5, 2, 1, 3, 2, 5, 4, 1, 3));
+
+        System.out.println("Original:");
         System.out.println(list);
+
         Collections.sort(list);
+
+        System.out.println("Sorted:");
         System.out.println(list);
-        sc.close();
+
         remove_dub(list);
+
+        System.out.println("After removing duplicates:");
         System.out.println(list);
     }
 }

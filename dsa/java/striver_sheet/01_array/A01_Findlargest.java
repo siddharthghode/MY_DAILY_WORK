@@ -12,9 +12,6 @@ public class A01_Findlargest {
                  maxi=i;
             }
          }
-         System.out.println("Largest_elemnet is : "+arr[maxi]);
-
-
-         
+         System.out.println("Largest_elemnet is : "+arr[maxi]);    
     }
 }
