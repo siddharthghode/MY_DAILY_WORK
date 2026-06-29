@@ -1,7 +1,5 @@
 import java.util.*;
 
-import javax.sound.sampled.SourceDataLine;
-
 public class A03_Rotate_left_by_1 {
     public static void main(String[] args)
     {
