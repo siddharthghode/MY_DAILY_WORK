@@ -23,20 +23,16 @@ public class A02_Remove_dublicates {
 
     public static void main(String[] args) {
 
-        ArrayList<Integer> list = new ArrayList<>(
-                Arrays.asList(5, 2, 1, 3, 2, 5, 4, 1, 3));
+        ArrayList<Integer> list = new ArrayList<>(Arrays.asList(5, 2, 1, 3, 2, 5, 4, 1, 3));
+        // Collections.sort(list);
+        // remove_dub(list);
+        HashSet<Integer> seet = new HashSet<>();
+        for (int x : list) {
+            seet.add(x);
+        }
+        System.out.println(seet);
 
-        System.out.println("Original:");
-        System.out.println(list);
-
-        Collections.sort(list);
-
-        System.out.println("Sorted:");
-        System.out.println(list);
-
-        remove_dub(list);
-
-        System.out.println("After removing duplicates:");
-        System.out.println(list);
+        // System.out.println("After removing duplicates:");
+        // System.out.println(list);
     }
 }
