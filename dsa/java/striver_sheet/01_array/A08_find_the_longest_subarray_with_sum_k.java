@@ -1,5 +1,4 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class A08_find_the_longest_subarray_with_sum_k {
 
