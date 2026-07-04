@@ -9,7 +9,7 @@ public class A11_majority_element {
             mpp.put(nums[i], mpp.getOrDefault(nums[i], 0) + 1);
         }
         // Find the majority element
-        for (int i=0;i<n;i++) {
+        for (int i = 0; i < n; i++) {
             if (mpp.get(nums[i]) > n / 2)
                 System.out.println(nums[i]);
             break;
