@@ -3,9 +3,7 @@ import java.util.*;
 public class A02_Remove_dublicates {
 
     static void remove_dub(ArrayList<Integer> list) {
-
         int i = 0;
-
         for (int j = 1; j < list.size(); j++) {
 
             if (!list.get(i).equals(list.get(j))) {
