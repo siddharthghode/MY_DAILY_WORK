@@ -1,7 +1,11 @@
-numbers = [10,20,30,20]
+import json
 
-for i in numbers:
-     if(i==20):
-         numbers.pop(2)
-         print(numbers)
-         break
+student = {
+    "name": "Sid",
+    "age": 23
+}
+
+json_data = json.dumps(student)
+
+print(json_data)
+11
