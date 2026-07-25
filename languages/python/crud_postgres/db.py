@@ -8,4 +8,4 @@ conn = psycopg.connect(
     port=5432
 )
 cursor = conn.cursor()
-print("Connected successfully!")
+print(" Database Connected successfully!")
