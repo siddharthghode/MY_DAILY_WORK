@@ -13,13 +13,16 @@ export const generatePodId = () => {
 // Cached instance ID for this session (simulating container hostname)
 const cachedInstanceId = generatePodId();
 
-export const getAppConfig = () => ({
-  appName: import.meta.env.VITE_APP_NAME || 'KubePulse',
-  appVersion: import.meta.env.VITE_APP_VERSION || '1.0.0',
-  environment: import.meta.env.VITE_ENVIRONMENT || 'development',
-  region: import.meta.env.VITE_REGION || 'local',
-  containerId: cachedInstanceId,
-});
+export const getAppConfig = () => {
+  const runtimeConfig = (typeof window !== 'undefined' && window.__CONFIG__) || {};
+  return {
+    appName: runtimeConfig.APP_NAME || import.meta.env.VITE_APP_NAME || 'KubePulse',
+    appVersion: runtimeConfig.APP_VERSION || import.meta.env.VITE_APP_VERSION || '1.0.0',
+    environment: runtimeConfig.ENVIRONMENT || import.meta.env.VITE_ENVIRONMENT || 'development',
+    region: runtimeConfig.REGION || import.meta.env.VITE_REGION || 'local',
+    containerId: runtimeConfig.POD_NAME || runtimeConfig.CONTAINER_ID || cachedInstanceId,
+  };
+};
 
 export const getInitialMetrics = () => ({
   status: 'Running',
