@@ -1,0 +1,339 @@
+
+============================================================
+        KubePulse Kubernetes Setup
+============================================================
+Started: Sat Oct  3 08:15:10 PM IST 2026
+Log file: k8s-setup.log
+============================================================
+
+
+------------------------------------------------------------
+STEP: Checking prerequisites
+------------------------------------------------------------
+Docker:
+Docker version 29.2.1, build a5c7197
+
+kubectl:
+Client Version: v1.35.9
+Kustomize Version: v5.7.1
+
+Minikube:
+minikube version: v1.39.0
+commit: 7a9f6a841470a207de8cf4bafcccee0969d8ba10
+
+[SUCCESS] All required commands are installed.
+
+------------------------------------------------------------
+STEP: Checking Docker daemon
+------------------------------------------------------------
+
+[SUCCESS] Docker daemon is running.
+
+------------------------------------------------------------
+STEP: Starting Minikube
+------------------------------------------------------------
+Minikube is already running.
+
+Kubernetes nodes:
+NAME       STATUS   ROLES           AGE   VERSION
+minikube   Ready    control-plane   38m   v1.37.0
+
+[SUCCESS] Minikube is ready.
+
+------------------------------------------------------------
+STEP: Building Docker image
+------------------------------------------------------------
+Building:
+kubepulse:1.0
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.27kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/node:20-alpine
+#2 DONE 1.5s
+
+#3 [internal] load metadata for docker.io/library/nginx:alpine
+#3 DONE 1.5s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 142B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 13.50kB done
+#5 DONE 0.0s
+
+#6 [builder 1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+#6 resolve docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293 0.0s done
+#6 DONE 0.0s
+
+#7 [stage-1 1/4] FROM docker.io/library/nginx:alpine@sha256:df221db836e1754089190208cee7eeda94f233197056426eda74a43ab1abeac2
+#7 resolve docker.io/library/nginx:alpine@sha256:df221db836e1754089190208cee7eeda94f233197056426eda74a43ab1abeac2 0.0s done
+#7 DONE 0.0s
+
+#8 [builder 2/6] WORKDIR /app
+#8 CACHED
+
+#9 [builder 3/6] COPY package*.json ./
+#9 CACHED
+
+#10 [builder 4/6] RUN npm ci
+#10 CACHED
+
+#11 [builder 5/6] COPY . .
+#11 DONE 0.0s
+
+#12 [builder 6/6] RUN npm run build
+#12 0.348 
+#12 0.348 > kubepulse@1.0.0 build
+#12 0.348 > vite build
+#12 0.348 
+#12 0.648 vite v5.4.21 building for production...
+#12 0.702 transforming...
+#12 8.637 ✓ 38 modules transformed.
+#12 8.782 rendering chunks...
+#12 8.797 computing gzip size...
+#12 8.812 dist/index.html                   0.49 kB │ gzip:  0.32 kB
+#12 8.812 dist/assets/index-KRyQbZhG.css    9.73 kB │ gzip:  2.53 kB
+#12 8.812 dist/assets/index-DxTzEbBl.js   158.89 kB │ gzip: 50.06 kB
+#12 8.813 ✓ built in 8.14s
+#12 DONE 8.9s
+
+#13 [stage-1 3/4] COPY --from=builder /app/dist /usr/share/nginx/html
+#13 CACHED
+
+#14 [stage-1 2/4] RUN rm -rf /usr/share/nginx/html/*
+#14 CACHED
+
+#15 [stage-1 4/4] COPY nginx.conf /etc/nginx/conf.d/default.conf
+#15 CACHED
+
+#16 exporting to image
+#16 exporting layers done
+#16 exporting manifest sha256:5d645900ad7325343d842d37d1a92104af27e1b096eeddeed671b8765c6829bc done
+#16 exporting config sha256:bf5815c2f1845b996a98b672eb83212df61a7b8cc34ae19fddb38e317abc7778 done
+#16 exporting attestation manifest sha256:a5a1eb938a9f37c5198a2476a0c8951e0f625dab7f6be4fd02f0641d3c98e697 0.0s done
+#16 exporting manifest list sha256:f75c1b28e211f52803f4f93cd789d3673506979a3ec02b6a6bcf3492e858bf0f done
+#16 naming to docker.io/library/kubepulse:1.0 done
+#16 unpacking to docker.io/library/kubepulse:1.0 0.0s done
+#16 DONE 0.1s
+
+[SUCCESS] Docker image built.
+
+Docker image:
+WARNING: This output is designed for human readability. For machine-readable output, please use --format.
+kubepulse:1.0                                                                                         f75c1b28e211       93.9MB         26.4MB        
+kubepulse:latest                                                                                      416e0e6f1972       93.9MB         26.4MB   U    
+
+------------------------------------------------------------
+STEP: Loading Docker image into Minikube
+------------------------------------------------------------
+
+[SUCCESS] Docker image loaded into Minikube.
+
+------------------------------------------------------------
+STEP: Creating Kubernetes namespace
+------------------------------------------------------------
+namespace/kubepulse created
+
+[SUCCESS] Namespace 'kubepulse' created.
+
+------------------------------------------------------------
+STEP: Creating Kubernetes manifests directory
+------------------------------------------------------------
+
+------------------------------------------------------------
+STEP: Creating Kubernetes Deployment
+------------------------------------------------------------
+Created:
+k8s/deployment.yaml
+
+------------------------------------------------------------
+STEP: Creating Kubernetes Service
+------------------------------------------------------------
+Created:
+k8s/service.yaml
+
+------------------------------------------------------------
+STEP: Deploying application to Kubernetes
+------------------------------------------------------------
+deployment.apps/kubepulse created
+service/kubepulse-service created
+
+[SUCCESS] Kubernetes resources created.
+
+------------------------------------------------------------
+STEP: Waiting for Pods to become ready
+------------------------------------------------------------
+deployment "kubepulse" successfully rolled out
+
+[SUCCESS] Deployment is ready.
+
+------------------------------------------------------------
+STEP: Checking Kubernetes resources
+------------------------------------------------------------
+
+Namespaces:
+NAME              STATUS   AGE
+default           Active   38m
+kube-node-lease   Active   38m
+kube-public       Active   38m
+kube-system       Active   38m
+kubepulse         Active   1s
+
+Deployments:
+NAME        READY   UP-TO-DATE   AVAILABLE   AGE
+kubepulse   2/2     2            2           1s
+
+Pods:
+NAME                         READY   STATUS    RESTARTS   AGE   IP           NODE       NOMINATED NODE   READINESS GATES
+kubepulse-7ffc89d567-6n2kr   1/1     Running   0          2s    10.244.0.4   minikube   <none>           <none>
+kubepulse-7ffc89d567-m998n   1/1     Running   0          2s    10.244.0.5   minikube   <none>           <none>
+
+Services:
+NAME                TYPE       CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
+kubepulse-service   NodePort   10.109.6.16   <none>        80:32171/TCP   1s
+
+------------------------------------------------------------
+STEP: Testing Kubernetes Service
+------------------------------------------------------------
+
+KubePulse URL:
+http://192.168.49.2:32171
+
+Testing HTTP response...
+
+[SUCCESS] KubePulse HTTP test passed.
+
+------------------------------------------------------------
+STEP: Testing Kubernetes scaling
+------------------------------------------------------------
+Scaling from 2 Pods to 5 Pods...
+deployment.apps/kubepulse scaled
+Waiting for deployment "kubepulse" rollout to finish: 2 of 5 updated replicas are available...
+Waiting for deployment "kubepulse" rollout to finish: 3 of 5 updated replicas are available...
+Waiting for deployment "kubepulse" rollout to finish: 4 of 5 updated replicas are available...
+deployment "kubepulse" successfully rolled out
+
+Pods after scaling:
+NAME                         READY   STATUS    RESTARTS   AGE
+kubepulse-7ffc89d567-6n2kr   1/1     Running   0          3s
+kubepulse-7ffc89d567-79xg7   1/1     Running   0          0s
+kubepulse-7ffc89d567-jwgsd   1/1     Running   0          0s
+kubepulse-7ffc89d567-m998n   1/1     Running   0          3s
+kubepulse-7ffc89d567-rtzwp   1/1     Running   0          0s
+
+Running Pods: 5
+
+[SUCCESS] Scaling test passed.
+
+------------------------------------------------------------
+STEP: Scaling back to 2 Pods
+------------------------------------------------------------
+deployment.apps/kubepulse scaled
+deployment "kubepulse" successfully rolled out
+
+NAME                         READY   STATUS      RESTARTS   AGE
+kubepulse-7ffc89d567-6n2kr   1/1     Running     0          4s
+kubepulse-7ffc89d567-79xg7   0/1     Completed   0          1s
+kubepulse-7ffc89d567-jwgsd   0/1     Completed   0          1s
+kubepulse-7ffc89d567-m998n   1/1     Running     0          4s
+kubepulse-7ffc89d567-rtzwp   0/1     Completed   0          1s
+
+[SUCCESS] Scale-down test completed.
+
+------------------------------------------------------------
+STEP: Testing Kubernetes self-healing
+------------------------------------------------------------
+
+Deleting Pod:
+kubepulse-7ffc89d567-6n2kr
+pod "kubepulse-7ffc89d567-6n2kr" deleted from kubepulse namespace
+
+Waiting for Kubernetes to recreate the Pod...
+NAME                         READY   STATUS    RESTARTS   AGE
+kubepulse-7ffc89d567-m998n   1/1     Running   0          11s
+kubepulse-7ffc89d567-xp49s   1/1     Running   0          6s
+deployment "kubepulse" successfully rolled out
+
+[SUCCESS] Self-healing test completed.
+
+------------------------------------------------------------
+STEP: Final Kubernetes state
+------------------------------------------------------------
+
+================ DEPLOYMENTS ================
+NAME        READY   UP-TO-DATE   AVAILABLE   AGE
+kubepulse   2/2     2            2           11s
+
+================ PODS ================
+NAME                         READY   STATUS    RESTARTS   AGE   IP           NODE       NOMINATED NODE   READINESS GATES
+kubepulse-7ffc89d567-m998n   1/1     Running   0          11s   10.244.0.5   minikube   <none>           <none>
+kubepulse-7ffc89d567-xp49s   1/1     Running   0          6s    10.244.0.9   minikube   <none>           <none>
+
+================ SERVICES ================
+NAME                TYPE       CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
+kubepulse-service   NodePort   10.109.6.16   <none>        80:32171/TCP   10s
+
+================ REPLICASETS ================
+NAME                   DESIRED   CURRENT   READY   AGE
+kubepulse-7ffc89d567   2         2         2       12s
+
+------------------------------------------------------------
+STEP: Kubernetes resource summary
+------------------------------------------------------------
+NAME                             READY   STATUS    RESTARTS   AGE
+pod/kubepulse-7ffc89d567-m998n   1/1     Running   0          12s
+pod/kubepulse-7ffc89d567-xp49s   1/1     Running   0          7s
+
+NAME                        TYPE       CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
+service/kubepulse-service   NodePort   10.109.6.16   <none>        80:32171/TCP   11s
+
+NAME                        READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/kubepulse   2/2     2            2           12s
+
+NAME                                   DESIRED   CURRENT   READY   AGE
+replicaset.apps/kubepulse-7ffc89d567   2         2         2       12s
+
+============================================================
+              KUBEPULSE SETUP COMPLETE
+============================================================
+
+Started : Sat Oct  3 08:15:10 PM IST 2026
+Finished: Sat Oct  3 08:15:41 PM IST 2026
+
+Application:
+  Name      : KubePulse
+  Namespace : kubepulse
+  Image     : kubepulse:1.0
+
+Service:
+  http://192.168.49.2:32171
+
+Useful commands:
+
+  kubectl get pods -n kubepulse
+  kubectl get deployments -n kubepulse
+  kubectl get services -n kubepulse
+  kubectl get all -n kubepulse
+
+Open application:
+
+  minikube service kubepulse-service -n kubepulse
+
+View logs:
+
+  kubectl logs -n kubepulse <POD_NAME>
+
+View events:
+
+  kubectl get events -n kubepulse
+
+Log file:
+  k8s-setup.log
+
+============================================================
+
+[SUCCESS] All Kubernetes setup and tests completed.
