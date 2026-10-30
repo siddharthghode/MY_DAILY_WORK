@@ -1,9 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
-
-class Node
+struct Node
 {
-public:
     int data;
     Node *next;
 
@@ -12,15 +10,12 @@ public:
         data = data1;
         next = next1;
     }
-    void print()
-    {
-        cout << data << endl;
-        cout << next;
-    }
 };
+
 int main()
 {
-    Node s2(5, nullptr);
-    Node s1(6, &s2);
-    s2.print();
+    Node x = Node(1, nullptr);
+    Node y = Node(2, &x);
+    cout << x.next << endl;
+    cout << y.next;
 }
